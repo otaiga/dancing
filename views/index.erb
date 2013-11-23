@@ -40,7 +40,7 @@
   	<i></i>
 	</section>
 
-	<audio id="soundFile" src="/octave.ogg"></audio>
+	<audio id="soundFile" src="/Guilt.mp3"></audio>
 </body>
 
 <script type="text/javascript">
@@ -53,6 +53,8 @@ var audioBuffer;
 var analyzer;
 //set empty array hald of fft size or equal to frequencybincount (you could put frequency bin count here if created)
 var frequencyData = new Uint8Array(32);
+
+var audioElement = getElementById('soundFile');
 
   // window.webkitAudioContext || 
   // window.mozAudioContext || 
@@ -96,7 +98,8 @@ function createAnalyser(source) {
 
 function playSound(buffer) {
 	//creating source node
-	var source = context.createBufferSource();
+	//  /var source = context.createBufferSource();
+	var source = context.createMediaElementSource(audioElement);
 	//passing in file
 	source.buffer = buffer;
 	createAnalyser(source);
